@@ -21,6 +21,32 @@ const questions = () => {
         },
         {
             type: 'input',
+            name: 'profile',
+            message: 'What is your GitHub username? (Required)',
+            validate: gitInput => {
+                if (gitInput) {
+                    return true;
+                } else {
+                    console.log('Please enter your GitHub profile!');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'project',
+            message: 'What is the name of your project? (Required)',
+            validate: projectInput => {
+                if (projectInput) {
+                    return true;
+                } else {
+                    console.log('Please enter the name of your project.');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
             name: 'description',
             message: 'Please provide a description of your project (be sure to explain the what/why/how - why does this project exist?). (Required)',
             validate: descriptionInput => {
@@ -41,6 +67,20 @@ const questions = () => {
                     return true;
                 } else {
                     console.log('Please let us know how to install your project!');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'checkbox',
+            name: 'badges',
+            message: 'Which of the following did you use to create your project? (check all that apply)',
+            choices: [''],
+            validate: badgeInput => {
+                if (badgeInput) {
+                    return true;
+                } else {
+                    console.log('Please enter a description of your project.');
                     return false;
                 }
             }

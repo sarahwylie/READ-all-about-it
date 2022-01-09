@@ -1,3 +1,4 @@
+// const date = "`r format(Sys.date(), %Y')`"
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 // function renderLicenseBadge(license) {
@@ -36,9 +37,9 @@
 
 //   ## Tests
 
-//   ### Any questions? Please contact ${contact}
+//   ### Any questions? Please contact ${gitInput}
 
-//   ### &copy ${name}
+//   ### &copy ${date} ${name}
 // `;
 // }
 
