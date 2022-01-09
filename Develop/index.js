@@ -1,7 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
-// const {writeFile, copyFile} = require('./utils/generateMarkdown.js');
-// const generatePage = require("./src/page-template.js");
+const fs = require('fs');
+const {writeFile, copyFile} = require('./utils/generateMarkdown.js');
 
 // TODO: Create an array of questions for user input
 const questions = () => {
@@ -28,6 +28,19 @@ const questions = () => {
                     return true;
                 } else {
                     console.log('Please enter your GitHub profile!');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'What is your email address? (Required)',
+            validate: emailInput => {
+                if (emailInput) {
+                    return true;
+                } else {
+                    console.log('Please enter your email address.');
                     return false;
                 }
             }
@@ -72,23 +85,59 @@ const questions = () => {
             }
         },
         {
-            type: 'checkbox',
-            name: 'badges',
-            message: 'Which of the following did you use to create your project? (check all that apply)',
-            choices: [''],
-            validate: badgeInput => {
-                if (badgeInput) {
+            type: 'confirm',
+            name: 'confirmLicenses',
+            message: 'Would you like to add a license to your project?',
+            default: false,
+            when: ({confirmAbout}) => {
+                if (confirmAbout) {
                     return true;
                 } else {
-                    console.log('Please enter a description of your project.');
                     return false;
                 }
             }
-        },
+        }
+        // {
+        //     type: 'checkbox',
+        //     name: 'badges',
+        //     message: 'Which of the following did you use to create your project? (check all that apply)',
+        //     choices: [''],
+        //     validate: badgeInput => {
+        //         if (badgeInput) {
+        //             return true;
+        //         } else {
+        //             console.log('Please enter a description of your project.');
+        //             return false;
+        //         }
+        //     }
+        // },
     ]);
 }
 
-questions();
+questions()
+.then(portfolioData => {
+    return generatePage(portfolioData);
+})
+.then (README => {
+    return fs.writeFile('README.md', `${project}`, (err) => {
+        // If there is any error in writing to the file, return
+        if (err) {
+            console.error(err)
+            return
+        }
+        console.log('Go check out your new README.md located in the "dist" folder!')
+    })
+})
+.then(writeFileResponse => {
+    console.log(writeFileResponse);
+    return copyFile();
+})
+.then(copyFileResponse => {
+    console.log(copyFileResponse);
+})
+.catch(err => {
+    console.log(err)
+})
 
 // TODO: Create a function to write README file
 // function writeToFile(fileName, data) {}
