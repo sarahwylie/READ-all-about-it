@@ -2,6 +2,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const {writeFile, copyFile} = require('./utils/generateMarkdown.js');
+const generatePage = require("./utils/page-template.js");
 
 // TODO: Create an array of questions for user input
 const questions = () => {
@@ -86,17 +87,23 @@ const questions = () => {
         },
         {
             type: 'confirm',
-            name: 'confirmLicenses',
+            name: 'confirmLicense',
             message: 'Would you like to add a license to your project?',
             default: false,
-            when: ({confirmAbout}) => {
-                if (confirmAbout) {
-                    return true;
-                } else {
-                    return false;
-                }
+        },
+        {
+            type: 'list',
+            name: 'license',
+            message: 'Please choose a license.',
+            choices: ['Apache', 'Boost', 'Eclipse', 'IBM', 'MIT', 'Mozilla', 'Unlicense', 'WTFPL'],
+            when: ({confirmLicense}) => {
+             if (confirmLicense) {
+                return true
+                .then renderLicenseSection();
+             } else {
+                return false;
             }
-        }
+        }},
         // {
         //     type: 'checkbox',
         //     name: 'badges',
@@ -115,18 +122,12 @@ const questions = () => {
 }
 
 questions()
-.then(portfolioData => {
-    return generatePage(portfolioData);
+.then(renderLicenseSection)
+.then(gitData => {
+    return generatePage(gitData);
 })
 .then (README => {
-    return fs.writeFile('README.md', `${project}`, (err) => {
-        // If there is any error in writing to the file, return
-        if (err) {
-            console.error(err)
-            return
-        }
-        console.log('Go check out your new README.md located in the "dist" folder!')
-    })
+    return writeFile(README);
 })
 .then(writeFileResponse => {
     console.log(writeFileResponse);
