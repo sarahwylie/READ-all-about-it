@@ -18,5 +18,3 @@ Clone this repo's code to your computer and pop open the file named 'app.js'. In
 ![Google Chrome](https://img.shields.io/badge/Google%20Chrome-4285F4?style=for-the-badge&logo=GoogleChrome&logoColor=white)
 
 ### &copy; 2022 by Sarah Wylie
-
-[#Installation]
