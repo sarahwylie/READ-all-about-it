@@ -1,12 +1,12 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const {writeFile, copyFile} = require('./utils/generateMarkdown.js');
+const {writeFile} = require('./utils/generateMarkdown.js');
 const generatePage = require("./utils/page-template.js");
 
 // TODO: Create an array of questions for user input
-const questions = () => {
-    return inquirer.prompt([
+const questions = (gitData) => {
+    inquirer.prompt([
         {
             type: 'input',
             name: 'name',
@@ -99,7 +99,6 @@ const questions = () => {
             when: ({confirmLicense}) => {
              if (confirmLicense) {
                 return true
-                .then renderLicenseSection();
              } else {
                 return false;
             }
@@ -122,23 +121,23 @@ const questions = () => {
 }
 
 questions()
-.then(renderLicenseSection)
-.then(gitData => {
+    .then(renderLicenseBadge)
+    .then(gitData => {
     return generatePage(gitData);
-})
-.then (README => {
+    })
+    .then (README => {
     return writeFile(README);
-})
-.then(writeFileResponse => {
+    })
+    .then(writeFileResponse => {
     console.log(writeFileResponse);
     return copyFile();
-})
-.then(copyFileResponse => {
+    })
+    .then(copyFileResponse => {
     console.log(copyFileResponse);
-})
-.catch(err => {
+    })
+    .catch(err => {
     console.log(err)
-})
+    })
 
 // TODO: Create a function to write README file
 // function writeToFile(fileName, data) {}
