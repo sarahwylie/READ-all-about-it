@@ -10,7 +10,7 @@ Clone this repo's code to your computer and pop open the file named 'index.js'. 
 When you need create a new README for your file, but don't want to think about the input, just ask the Generator for some prompts!
 
 ## The finished output:
-![screenshot](/utils/Screenshot.jpg)
+![screenshot](/images/Screenshot.jpg)
 
 ## Badges
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
@@ -19,4 +19,4 @@ When you need create a new README for your file, but don't want to think about t
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 
 
-### &copy; 2022 by Sarah Wylie
+### <sup>©</sup> 2022 by Sarah Wylie

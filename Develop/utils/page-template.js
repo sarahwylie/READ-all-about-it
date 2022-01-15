@@ -69,7 +69,7 @@ function pageTemplate(gitData) {
     const { name, profile, email, project, description, usage, installation, license, contributors, tests } = gitData;
   return `
   # ${project}
-    ${renderLicenseBadge(license)}
+${renderLicenseBadge(license)}
   
   ## Description
   ${description}
