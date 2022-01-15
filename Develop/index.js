@@ -86,6 +86,21 @@ const questions = (gitData) => {
             }
         },
         {
+            type: 'input',
+            name: 'usage',
+            message: 'Please explain how to use your project',
+        },
+        {
+            type: 'input',
+            name: 'contributors',
+            message: 'Please list all contributors to your project (use the @ symbol preceding each name to link to their profile)',
+        },
+        {
+            type: 'input',
+            name: 'tests',
+            message: 'Please list all tests you ran or testing software you used.',
+        },
+        {
             type: 'list',
             name: 'license',
             message: 'Please choose a license.',
@@ -123,16 +138,18 @@ questions()
     })
 
 const writeFile = fileContent => {
+    // console.log(fileContent)
     // return new Promise((resolve, reject) => {
-        return fs.writeFile('./dist/README.md', fileContent, err => {
+        fs.writeFile('./dist/README.md', fileContent, err => {
             if (err) {
                 // reject(err);
-                return;
+                return console.log(err);
             }
-            resolve({
-                ok: true,
-                message: 'File Created!'
-            })
+            // resolve({
+            //     ok: true,
+            //     message: 'File Created!'
+            // })
+            console.log('wooooo')
         })
     // })
 }
