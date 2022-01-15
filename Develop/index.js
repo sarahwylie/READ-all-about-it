@@ -1,12 +1,12 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const {writeFile} = require('./utils/generateMarkdown.js');
-const generatePage = require("./utils/page-template.js");
+// const { writeFile } = require('./utils/generateMarkdown');
+const {pageTemplate} = require("./utils/page-template");
 
 // TODO: Create an array of questions for user input
 const questions = (gitData) => {
-    inquirer.prompt([
+    return inquirer.prompt([
         {
             type: 'input',
             name: 'name',
@@ -86,23 +86,17 @@ const questions = (gitData) => {
             }
         },
         {
-            type: 'confirm',
-            name: 'confirmLicense',
-            message: 'Would you like to add a license to your project?',
-            default: false,
-        },
-        {
             type: 'list',
             name: 'license',
             message: 'Please choose a license.',
-            choices: ['Apache', 'Boost', 'Eclipse', 'IBM', 'MIT', 'Mozilla', 'Unlicense', 'WTFPL'],
-            when: ({confirmLicense}) => {
-             if (confirmLicense) {
-                return true
-             } else {
-                return false;
-            }
-        }},
+            choices: ['Apache', 'Boost', 'Eclipse', 'IBM', 'MIT', 'Mozilla', 'Unlicense', 'WTFPL', 'No License'],
+            // when: ({confirmLicense}) => {
+            //  if (confirmLicense) {
+            //     return renderLicenseBadge();
+            //  } else {
+            //     return false;
+            // }
+        },
         // {
         //     type: 'checkbox',
         //     name: 'badges',
@@ -121,23 +115,28 @@ const questions = (gitData) => {
 }
 
 questions()
-    .then(renderLicenseBadge)
-    .then(gitData => {
-    return generatePage(gitData);
-    })
-    .then (README => {
-    return writeFile(README);
-    })
-    .then(writeFileResponse => {
-    console.log(writeFileResponse);
-    return copyFile();
-    })
-    .then(copyFileResponse => {
-    console.log(copyFileResponse);
+    .then(README => {
+     writeFile(pageTemplate(README));
     })
     .catch(err => {
-    console.log(err)
+        console.log(err)
     })
+
+const writeFile = fileContent => {
+    // return new Promise((resolve, reject) => {
+        return fs.writeFile('./dist/README.md', fileContent, err => {
+            if (err) {
+                // reject(err);
+                return;
+            }
+            resolve({
+                ok: true,
+                message: 'File Created!'
+            })
+        })
+    // })
+}
+
 
 // TODO: Create a function to write README file
 // function writeToFile(fileName, data) {}
