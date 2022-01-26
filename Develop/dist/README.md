@@ -16,7 +16,7 @@
   Clone this repo's code to your computer and pop open the file named 'index.js'. In your terminal, type 'node index' and follow the command prompts. Once you have completed all prompts, hop over to the "dist" folder and pop open your new README.md file to see your beautiful new README!
 
   ## Usage
-  When you need create a new README for your file, but don't want to think about the input, just ask the Generator for some prompts!
+  When you need create a new README for your file, but don't want to think about the input, just ask the Generator for some prompts!When you need create a new README for your file, but don't want to think about the input, just ask the Generator for some prompts!
 
 
 ## License
@@ -27,10 +27,10 @@
   Kevin, Faizan
 
   ## Tests
-  No testing used in this project.
+  No testing was used in this project.
 
   ### Any questions? 
-  Please contact @[sarahwylie](https://github.com/sarahwylie) by emailing me at sarahannemariawylie@gmail.com.
+  Please contact @[sarahwylie](https://github.com/sarahwylie) by emailing me at [sarahannemariawylie@gmail.com](mailto:sarahannemariawylie@gmail.com).
 
 
   © 2022 Sarah

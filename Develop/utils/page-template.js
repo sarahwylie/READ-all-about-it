@@ -96,7 +96,7 @@ ${renderLicenseSection(license)}
   ${tests}
 
   ### Any questions? 
-  Please contact @[${profile}](https://github.com/${profile}) by emailing me at ${email}.
+  Please contact @[${profile}](https://github.com/${profile}) by emailing me at [${email}](mailto:${email}).
 
 
   © 2022 ${name}
