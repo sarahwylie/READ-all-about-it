@@ -30,7 +30,7 @@
   No testing used in this project.
 
   ### Any questions? 
-  Please contact @sarahwylie by emailing me at sarahannemariawylie@gmail.com.
+  Please contact @[sarahwylie](https://github.com/sarahwylie) by emailing me at sarahannemariawylie@gmail.com.
 
 
   © 2022 Sarah
