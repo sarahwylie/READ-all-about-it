@@ -1,4 +1,4 @@
-# README.md Generator
+# READ All About It!
 
 ## Description
 Tired of getting to the end of your project and then realizing you still need a great README.md file? Want your project to stand out, but tired of putting in the effort? You've come to the right place! Use this installer to generate a README.md file that is concise and well-rounded! You'll be able to insert everything you need by prompt rather than thinking through what you might be missing. Never second-guess the opening to your project's GitHub page again!
